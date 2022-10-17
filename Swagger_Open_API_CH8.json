@@ -1,0 +1,480 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Binar Gamehub API",
+    "description": "Ini merupakan latihan dari binar academy mengenai dokumentasi menggunakan swegger.io",
+    "version": "1.0.1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "players",
+      "description": "Segala Sesuatu Mengenai Players"
+    }
+  ],
+  "paths": {
+    "/players": {
+      "post": {
+        "tags": [
+          "players"
+        ],
+        "summary": "Membuat Data Player Baru",
+        "description": "Membuat Data Player Baru",
+        "requestBody": {
+          "description": "Player Data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "admin"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "admin@app.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "123as"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Berhasil Ditambahkan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string",
+                      "example": "admin"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "admin@app.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "123as"
+                    },
+                    "experience": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "lvl": {
+                      "type": "integer",
+                      "example": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Komentar Kalau Gagal",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Data Tidak Berhasil Ditambahkan"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "players"
+        ],
+        "summary": "Merequest Data Player",
+        "description": "Menampilkan list player",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "description": "masukan username player",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "masukan email player",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "experience",
+            "in": "query",
+            "description": "masukan experience player",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "lvl",
+            "in": "query",
+            "description": "masukan lvl player",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Berhasil Diproses",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "username": {
+                        "type": "string",
+                        "example": "admin"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "admin@app.com"
+                      },
+                      "experience": {
+                        "type": "integer",
+                        "example": 0
+                      },
+                      "lvl": {
+                        "type": "integer",
+                        "example": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Komentar Kalau Gagal",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Data Tidak Berhasil Ditemukan"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/players/{Id}": {
+      "get": {
+        "tags": [
+          "players"
+        ],
+        "summary": "Menampilkan Data Player",
+        "description": "Menampilkan Data Player",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Silahkan Masukan Id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Berhasil Ditemukan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string",
+                      "example": "admin"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "admin@app.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "123as"
+                    },
+                    "experience": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "lvl": {
+                      "type": "integer",
+                      "example": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Komentar Kalau Gagal",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Data Tidak Ditemukan"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "players"
+        ],
+        "summary": "Mengubah Id Player",
+        "description": "Mengubah Id Player",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Silahkan Masukan Id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Player Data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Id": {
+                    "type": "integer",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Komentar Kalau Berhasil",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Data Berhasil Dirubah"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Komentar Kalau Gagal",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Data Tidak Berhasil Dirubah"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "players"
+        ],
+        "summary": "Get a user by ID",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Silahkan Masukan Id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Komentar Kalau Berhasil",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Data Player Berhasil Dihapus"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Komentar Kalau Gagal",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Data Player Tidak Berhasil Dihapus, Mungkin Data player Tidak"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Komentar Kalau Gagal",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Data Player Tidak Dapat Dihapus"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/player/exp/{Id}": {
+      "post": {
+        "tags": [
+          "players"
+        ],
+        "summary": "Membuat Data Player Baru",
+        "description": "Mengupdate Data Player",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Silahkan Masukan Id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Player Data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "experience": {
+                    "type": "integer",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Komentar Kalau Berhasil",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Experience Player Berhasil Ditambahkan"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Komentar Kalau Gagal",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "massage": {
+                      "type": "string",
+                      "example": "Experience Player Tidak Dapat Dirubah"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
